@@ -1,0 +1,32 @@
+{
+  "1": {
+    "Command": "Choose what section you want to manage",
+    "Options": [
+      {
+        "Key": "E",
+        "Description": "Manage EC2 section"
+      },
+      {
+        "Key": "R",
+        "Description": "Manage RDS Section"
+      }
+    ]
+  },
+  "2": {
+    "KeyIs_E": {
+      "Command": "Choose the command you wish to execute",
+      "Options": [
+        {
+          "Key": "STOP",
+          "Description": "Stop all instances"
+        },
+        {
+          "Key": "START",
+          "Description": "Start all instances"
+        }
+      ]
+    },
+    "KeyIs_R": {
+    }
+  }
+}
