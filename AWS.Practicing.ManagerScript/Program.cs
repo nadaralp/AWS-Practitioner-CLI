@@ -20,14 +20,27 @@ namespace AWS.Practicing.ManagerScript
             //    Console.WriteLine(arg);
             //}
 
-            IInstructor instructor = InstructorManagerRepository.GetInstructor(); //todo
-            //IInstructorExecutor instructorExecutor = InstructorManagerRepository.GetInstructorExecutor(instructor); //todo
-
-            while (!instructor.IsFinishedAsking)
+            try
             {
-                string response = instructor.Ask();
-                //instructor.EnsureValidResponse(response);
-                //await instructorExecutor.ExecuteInstruction(response);
+                IInstructor instructor = InstructorManagerRepository.GetInstructor();
+                //IInstructorExecutor instructorExecutor = InstructorManagerRepository.GetInstructorExecutor(instructor); //todo
+
+                while (!instructor.IsFinishedAsking)
+                {
+                    string response = instructor.Ask();
+                    instructor.EnsureValidResponse(response);
+                    ConsoleUtils.BreakLine();
+
+                    // Ensures there are more questions to come
+                    instructor.CheckIsFinishedAskingAndUpdate();
+                    //await instructorExecutor.ExecuteInstruction(response);
+                }
+
+                Console.WriteLine("Volaaaaaaa finished");
+            }
+            catch (Exception e)
+            {
+                ConsoleUtils.RedWriteLine(e.Message);
             }
         }
     }

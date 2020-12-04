@@ -3,7 +3,7 @@
     {
       "InstructionOptions": [
         {
-          "Trigger": "None",
+          "Trigger": "NONE",
           "Instruction": "Choose what section you want to manage",
           "Options": [
             {
@@ -48,6 +48,11 @@
             }
           ]
         }
+      ]
+    },
+    {
+      "InstructionOptions": [
+
       ]
     }
   ]

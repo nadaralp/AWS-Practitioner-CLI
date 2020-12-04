@@ -14,6 +14,7 @@ namespace AWS.Practicing.Services
     public class Instructor : IInstructor
     {
         private readonly string _instructionsPath;
+        private bool _isFinishedAsking = false;
 
         public InstructionReplyModel InstructionReplyModel { get; private set; }
         public InstructionsOptionsGraph InstructionsOptionsGraph { get; }
@@ -25,28 +26,40 @@ namespace AWS.Practicing.Services
             InstructionsOptionsGraph = GetInstructionOptionsGraphFromJsonFile();
         }
 
-        public bool IsFinishedAsking
-        {
-            get
-            {
-                //todo
-                return false;
-            }
-        }
-
         public string Ask()
         {
-            // need to get the current question.
-            // and list of answers for the current question
-            InstructionOption currentInstruction = InstructionsOptionsGraph[InstructionReplyModel];
+            InstructionOption currentInstruction = GetCurrentInstruction;
             ConsoleUtils.YellowWriteLine(currentInstruction.Instruction);
             foreach (InstructionOption.OptionsSchema optionSchema in currentInstruction.Options)
             {
                 ConsoleUtils.WriteLine($"{optionSchema.Key}: {optionSchema.Description}");
             }
-            ConsoleUtils.BreakLine();
             string response = Console.ReadLine();
             return response;
+        }
+
+        public bool IsFinishedAsking
+        {
+            get
+            {
+                return _isFinishedAsking;
+            }
+        }
+
+        /// <summary>
+        /// This function should always be called after EnsureValidResponse.
+        /// This way the logic is valid. This can produce bugs if called in different order
+        /// </summary>
+        public void CheckIsFinishedAskingAndUpdate()
+        {
+            try
+            {
+                InstructionOption instructionOption = GetCurrentInstruction;
+            }
+            catch
+            {
+                _isFinishedAsking = true;
+            }
         }
 
         /// <summary>
@@ -55,17 +68,15 @@ namespace AWS.Practicing.Services
         /// <exception cref="ArgumentException"
         public void EnsureValidResponse(string response)
         {
-            //IEnumerable<string> optionalKeys = currentInstruction.Options.Select(o => o.Key.ToLower());
+            InstructionOption currentInstruction = GetCurrentInstruction;
+            IEnumerable<string> optionalKeys = currentInstruction.Options.Select(o => o.Key.ToLower());
 
-            //if (!optionalKeys.Contains(response.ToLower()))
-            //{
-            //    throw new ArgumentException("There is no such option.");
-            //}
-        }
+            if (!optionalKeys.Contains(response.ToLower()))
+            {
+                throw new ArgumentException("There is no such option.");
+            }
 
-        public bool IsValidResponse(string response)
-        {
-            throw new NotImplementedException();
+            UpdateInstructionReplyModel(response);
         }
 
         #region Private methods - helpers
@@ -79,6 +90,16 @@ namespace AWS.Practicing.Services
                 return instructionOptionsList;
             }
         }
+
+        private void UpdateInstructionReplyModel(string response)
+        {
+            InstructionReplyModel.Step++;
+            InstructionReplyModel.Response = response;
+        }
+
+        private InstructionOption GetCurrentInstruction
+         =>
+            InstructionsOptionsGraph[InstructionReplyModel];
 
         #endregion Private methods - helpers
     }

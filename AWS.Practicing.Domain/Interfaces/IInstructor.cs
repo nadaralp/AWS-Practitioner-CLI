@@ -14,16 +14,19 @@ namespace AWS.Practicing.Domain.Interfaces
         string Ask();
 
         /// <summary>
-        /// Validates the response received from asking a question on the current stage
+        /// Ensures a valid response is persisting.
         /// </summary>
         /// <returns></returns>
-        bool IsValidResponse(string response);
-
         void EnsureValidResponse(string response);
 
         /// <summary>
         /// Determines if finished asking all questions to perform insturctions
         /// </summary>
         bool IsFinishedAsking { get; }
+
+        /// <summary>
+        /// Checks if instructor finished asking question and updates IsFinishedAsking to true if needed.
+        /// </summary>
+        void CheckIsFinishedAskingAndUpdate();
     }
 }
