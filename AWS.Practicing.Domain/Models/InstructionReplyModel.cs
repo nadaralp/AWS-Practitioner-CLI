@@ -10,18 +10,42 @@ namespace AWS.Practicing.Domain.Models
     {
         public static string EmptyResponse = "NONE";
 
-        public string Response { get; set; }
-        public short Step { get; set; }
+        public string ExecutionHistoryPath { get; private set; }
+        public string Response { get; private set; }
+        public short Step { get; private set; }
 
-        public InstructionReplyModel(string response, short step)
+        public InstructionReplyModel()
         {
+            Response = EmptyResponse;
+            Step = 0;
+            ExecutionHistoryPath = string.Empty;
+        }
+
+        public void Update(string response)
+        {
+            Step++;
+            UpdateExecutionHistoryPath(response);
             Response = response;
-            Step = step;
         }
 
-        public string GetExecutorKey()
+        public void RevertStep()
         {
-            return $"{Response.ToLower()}_{Step}";
+            Step--;
         }
+
+        #region Private methods
+
+        public void UpdateExecutionHistoryPath(string response)
+        {
+            if (ExecutionHistoryPath == string.Empty)
+            {
+                ExecutionHistoryPath += response;
+                return;
+            }
+
+            ExecutionHistoryPath += $"_{response}";
+        }
+
+        #endregion Private methods
     }
 }

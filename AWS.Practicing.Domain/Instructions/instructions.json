@@ -31,6 +31,10 @@
             {
               "Key": "START",
               "Description": "Start all EC2 instances"
+            },
+            {
+              "Key": "SHOW",
+              "Description": "Show all EC2 instances available"
             }
           ]
         },

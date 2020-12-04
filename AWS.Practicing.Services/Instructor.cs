@@ -22,7 +22,7 @@ namespace AWS.Practicing.Services
         public Instructor(string instructionsPath)
         {
             _instructionsPath = instructionsPath;
-            InstructionReplyModel = new InstructionReplyModel(InstructionReplyModel.EmptyResponse, 0);
+            InstructionReplyModel = new InstructionReplyModel();
             InstructionsOptionsGraph = GetInstructionOptionsGraphFromJsonFile();
         }
 
@@ -58,7 +58,7 @@ namespace AWS.Practicing.Services
             }
             catch
             {
-                InstructionReplyModel.Step--; // need to revert 1 back because EnsureValidResponse() increments always.
+                InstructionReplyModel.RevertStep(); // need to revert 1 back because EnsureValidResponse() increments always.
                 _isFinishedAsking = true;
             }
         }
@@ -77,7 +77,7 @@ namespace AWS.Practicing.Services
                 throw new ArgumentException("There is no such option.");
             }
 
-            UpdateInstructionReplyModel(response);
+            InstructionReplyModel.Update(response);
         }
 
         #region Private methods - helpers
@@ -90,12 +90,6 @@ namespace AWS.Practicing.Services
                 InstructionsOptionsGraph instructionOptionsList = JsonSerializer.Deserialize<InstructionsOptionsGraph>(textFromStreamReader);
                 return instructionOptionsList;
             }
-        }
-
-        private void UpdateInstructionReplyModel(string response)
-        {
-            InstructionReplyModel.Step++;
-            InstructionReplyModel.Response = response;
         }
 
         private InstructionOption GetCurrentInstruction

@@ -22,11 +22,11 @@ namespace AWS.Practicing.Services.Repositories
             InstructionExecutorsOptions.ExecutorInfo executorInfo =
                  instructionExecutorsOptions
                 .Executors
-                .FirstOrDefault(executor => executor.Key == instructionReplyModel.GetExecutorKey());
+                .FirstOrDefault(executor => executor.Key == instructionReplyModel.ExecutionHistoryPath);
 
             if (executorInfo is null)
             {
-                throw new NotImplementedException($"{instructionReplyModel.GetExecutorKey()} has no executor implementation");
+                throw new NotImplementedException($"{instructionReplyModel.ExecutionHistoryPath} has no executor implementation");
             }
 
             return CreateExecutor(executorInfo.ExecutorFullPath);

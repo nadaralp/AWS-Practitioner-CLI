@@ -5,10 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interfaces\AWS\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Instructions\instructions.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
