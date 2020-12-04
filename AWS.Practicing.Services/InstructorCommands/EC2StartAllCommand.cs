@@ -9,9 +9,9 @@ namespace AWS.Practicing.Services.InstructorCommands
 {
     public class EC2StartAllCommand : IInstructionCommand
     {
-        public Task Execute()
+        public async Task Execute()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("starting all ininstances");
         }
     }
 }

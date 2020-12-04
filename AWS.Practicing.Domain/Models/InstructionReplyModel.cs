@@ -18,5 +18,10 @@ namespace AWS.Practicing.Domain.Models
             Response = response;
             Step = step;
         }
+
+        public string GetExecutorKey()
+        {
+            return $"{Response.ToLower()}_{Step}";
+        }
     }
 }

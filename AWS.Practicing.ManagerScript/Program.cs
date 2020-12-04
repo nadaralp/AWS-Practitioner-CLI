@@ -23,7 +23,7 @@ namespace AWS.Practicing.ManagerScript
             try
             {
                 IInstructor instructor = InstructorManagerRepository.GetInstructor();
-                //IInstructorExecutor instructorExecutor = InstructorManagerRepository.GetInstructorExecutor(instructor); //todo
+                IInstructorExecutor instructorExecutor = InstructorManagerRepository.GetInstructorExecutor(instructor); //todo
 
                 while (!instructor.IsFinishedAsking)
                 {
@@ -33,10 +33,9 @@ namespace AWS.Practicing.ManagerScript
 
                     // Ensures there are more questions to come
                     instructor.CheckIsFinishedAskingAndUpdate();
-                    //await instructorExecutor.ExecuteInstruction(response);
                 }
 
-                Console.WriteLine("Volaaaaaaa finished");
+                await instructorExecutor.ExecuteInstruction();
             }
             catch (Exception e)
             {

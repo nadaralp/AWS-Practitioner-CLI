@@ -1,0 +1,10 @@
+# This file is the resolver dictionary schema for which executor resolves what actions.
+# Written in a key ({trigger}_{response}_{step}) -> executor full path (namespace.class)
+# NOTE: steps are 0 based
+
+Executors:
+  - Key: stop_1
+    ExecutorFullPath: AWS.Practicing.Services.InstructorCommands.EC2StartAllCommand
+
+  - Key: start_1
+    ExecutorFullPath: AWS.Practicing.Services.InstructorCommands.EC2StopAllCommand

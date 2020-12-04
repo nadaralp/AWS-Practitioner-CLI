@@ -7,11 +7,11 @@
           "Instruction": "Choose what section you want to manage",
           "Options": [
             {
-              "Key": "E",
+              "Key": "EC2",
               "Description": "Manage EC2 section"
             },
             {
-              "Key": "R",
+              "Key": "RDS",
               "Description": "Manage RDS Section"
             }
           ]
@@ -21,7 +21,7 @@
     {
       "InstructionOptions": [
         {
-          "Trigger": "E",
+          "Trigger": "EC2",
           "Instruction": "Choose the command you wish to execute",
           "Options": [
             {
@@ -35,7 +35,7 @@
           ]
         },
         {
-          "Trigger": "R",
+          "Trigger": "RDS",
           "Instruction": "Choose the command you wish to execute",
           "Options": [
             {

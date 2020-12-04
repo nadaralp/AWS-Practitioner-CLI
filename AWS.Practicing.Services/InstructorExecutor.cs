@@ -1,4 +1,5 @@
 ﻿using AWS.Practicing.Domain.Interfaces;
+using AWS.Practicing.Services.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,17 @@ namespace AWS.Practicing.Services
 {
     public class InstructorExecutor : IInstructorExecutor
     {
-        public IInstructor Instructor => throw new NotImplementedException();
+        public IInstructor Instructor { get; private set; }
 
-        public Task ExecuteInstruction(string instruction)
+        public InstructorExecutor(IInstructor instructor)
         {
-            // Get a command from the replymodel
-            // execute the comand.
-            throw new NotImplementedException();
+            Instructor = instructor;
+        }
+
+        public async Task ExecuteInstruction()
+        {
+            IInstructionCommand instructionCommand = InstructorManagerRepository.GetInstructionCommand(Instructor.InstructionReplyModel);
+            await instructionCommand.Execute();
         }
     }
 }

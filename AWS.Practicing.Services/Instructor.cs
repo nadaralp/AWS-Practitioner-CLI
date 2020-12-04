@@ -58,6 +58,7 @@ namespace AWS.Practicing.Services
             }
             catch
             {
+                InstructionReplyModel.Step--; // need to revert 1 back because EnsureValidResponse() increments always.
                 _isFinishedAsking = true;
             }
         }

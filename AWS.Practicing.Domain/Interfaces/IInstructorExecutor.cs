@@ -10,6 +10,6 @@ namespace AWS.Practicing.Domain.Interfaces
     {
         IInstructor Instructor { get; }
 
-        Task ExecuteInstruction(string instruction);
+        Task ExecuteInstruction();
     }
 }
