@@ -1,6 +1,6 @@
 ﻿using AWS.Practicing.Common;
-using AWS.Practicing.Domain;
 using AWS.Practicing.Domain.Interfaces;
+using AWS.Practicing.Services.Repositories;
 using System;
 using System.Threading.Tasks;
 
@@ -12,7 +12,7 @@ namespace AWS.Practicing.ManagerScript
         {
             if (args.Length == 0)
             {
-                ConsoleUtils.YellowConsoleWriteLine("Note: If you want to automate the process, then run the CLI with the commands args in order of steps. Exmaple: 'E' 'START'");
+                ConsoleUtils.YellowWriteLine("Note: If you want to automate the process, then run the CLI with the commands args in the order of steps. Exmaple: 'E' 'START' \n\n");
             }
 
             //foreach (var arg in args)
@@ -21,13 +21,13 @@ namespace AWS.Practicing.ManagerScript
             //}
 
             IInstructor instructor = InstructorManagerRepository.GetInstructor(); //todo
-            IInstructorExecutor instructorExecutor = InstructorManagerRepository.GetInstructorExecutor(instructor); //todo
+            //IInstructorExecutor instructorExecutor = InstructorManagerRepository.GetInstructorExecutor(instructor); //todo
 
             while (!instructor.IsFinishedAsking)
             {
                 string response = instructor.Ask();
-                instructor.EnsureValidResponse(response);
-                await instructorExecutor.ExecuteInstruction(response);
+                //instructor.EnsureValidResponse(response);
+                //await instructorExecutor.ExecuteInstruction(response);
             }
         }
     }

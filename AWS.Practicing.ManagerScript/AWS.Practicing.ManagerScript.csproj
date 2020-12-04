@@ -8,5 +8,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AWS.Practicing.Common\AWS.Practicing.Common.csproj" />
     <ProjectReference Include="..\AWS.Practicing.Domain\AWS.Practicing.Domain.csproj" />
+    <ProjectReference Include="..\AWS.Practicing.Services\AWS.Practicing.Services.csproj" />
   </ItemGroup>
 </Project>

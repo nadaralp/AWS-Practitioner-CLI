@@ -1,0 +1,54 @@
+{
+  "InstructionsGraph": [
+    {
+      "InstructionOptions": [
+        {
+          "Trigger": "None",
+          "Instruction": "Choose what section you want to manage",
+          "Options": [
+            {
+              "Key": "E",
+              "Description": "Manage EC2 section"
+            },
+            {
+              "Key": "R",
+              "Description": "Manage RDS Section"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "InstructionOptions": [
+        {
+          "Trigger": "E",
+          "Instruction": "Choose the command you wish to execute",
+          "Options": [
+            {
+              "Key": "STOP",
+              "Description": "Stop all EC2 instances"
+            },
+            {
+              "Key": "START",
+              "Description": "Start all EC2 instances"
+            }
+          ]
+        },
+        {
+          "Trigger": "R",
+          "Instruction": "Choose the command you wish to execute",
+          "Options": [
+            {
+              "Key": "STOP",
+              "Description": "Stop all RDS instances"
+            },
+            {
+              "Key": "START",
+              "Description": "Start all RDS instances"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

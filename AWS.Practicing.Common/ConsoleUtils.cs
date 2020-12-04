@@ -8,31 +8,44 @@ namespace AWS.Practicing.Common
 {
     public static class ConsoleUtils
     {
-        public static void ColoredConsoleWriteLine(object value, ConsoleColor consoleColor)
+        public static void ColoredWriteLine(object value, ConsoleColor consoleColor)
         {
             Console.ForegroundColor = consoleColor;
             Console.WriteLine(value);
             Console.ResetColor();
         }
 
-        public static void YellowConsoleWriteLine(object value)
+        public static void YellowWriteLine(object value)
         {
-            ColoredConsoleWriteLine(value, ConsoleColor.Yellow);
+            ColoredWriteLine(value, ConsoleColor.Yellow);
         }
 
-        public static void RedConsoleWriteLine(object value)
+        public static void RedWriteLine(object value)
         {
-            ColoredConsoleWriteLine(value, ConsoleColor.Red);
+            ColoredWriteLine(value, ConsoleColor.Red);
         }
 
-        public static void GreenConsoleWriteLine(object value)
+        public static void GreenWriteLine(object value)
         {
-            ColoredConsoleWriteLine(value, ConsoleColor.Green);
+            ColoredWriteLine(value, ConsoleColor.Green);
         }
 
-        public static void BlueConsoleWriteLine(object value)
+        public static void BlueWriteLine(object value)
         {
-            ColoredConsoleWriteLine(value, ConsoleColor.Blue);
+            ColoredWriteLine(value, ConsoleColor.Blue);
+        }
+
+        /// <summary>
+        /// This is needed to have an optional feature to toggle of console logs if CLI automation mode.
+        /// </summary>
+        public static void WriteLine(object value)
+        {
+            Console.WriteLine(value);
+        }
+
+        public static void BreakLine()
+        {
+            Console.WriteLine("\n");
         }
     }
 }
