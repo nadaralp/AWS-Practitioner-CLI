@@ -5,26 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWS.Practicing.Domain
+namespace AWS.Practicing.Services
 {
-    public class AWSFacade : IAWSFacade
+    public class Instructor : IInstructor
     {
-        public Task<bool> StartAllEC2InstancesAsync()
+        public bool IsFinishedAsking => throw new NotImplementedException();
+
+        public string Ask()
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> StartAllRDSInstancesAsync()
+        public void EnsureValidResponse(string response)
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> StopAllEC2InstancesAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> StopAllRDSInstancesAsync()
+        public bool IsValidResponse(string response)
         {
             throw new NotImplementedException();
         }

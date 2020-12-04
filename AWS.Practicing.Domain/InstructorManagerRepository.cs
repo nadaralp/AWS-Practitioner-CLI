@@ -1,4 +1,5 @@
 ﻿using AWS.Practicing.Domain.Interfaces;
+using AWS.Practicing.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AWS.Practicing.Domain
 {
-    public class DomainAbstractFactory
+    public class InstructorManagerRepository
     {
         public static IInstructor GetInstructor()
         {
@@ -19,6 +20,12 @@ namespace AWS.Practicing.Domain
         public static IInstructorExecutor GetInstructorExecutor(IInstructor instructor)
         {
             throw new NotImplementedException();
+        }
+
+        public static IInstructionCommand GetInstructionCommand(InstructionReplyModel instructionReplyModel)
+        {
+            InstructionCommandRepository instructionCommandRepository = new InstructionCommandRepository();
+            return instructionCommandRepository.GetInstructionCommand(instructionReplyModel);
         }
     }
 }

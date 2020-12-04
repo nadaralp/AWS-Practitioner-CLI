@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWS.Practicing.Domain", "AWS.Practicing.Domain\AWS.Practicing.Domain.csproj", "{4FBC1AFA-973B-4183-A9A0-BF92D8554C4B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWS.Practicing.Domain", "AWS.Practicing.Domain\AWS.Practicing.Domain.csproj", "{4FBC1AFA-973B-4183-A9A0-BF92D8554C4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWS.Practicing.ManagerScript", "AWS.Practicing.ManagerScript\AWS.Practicing.ManagerScript.csproj", "{36D5BFBA-6E8B-4A29-9DE7-2AAB8FBFA48A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWS.Practicing.ManagerScript", "AWS.Practicing.ManagerScript\AWS.Practicing.ManagerScript.csproj", "{36D5BFBA-6E8B-4A29-9DE7-2AAB8FBFA48A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWS.Practicing.Common", "AWS.Practicing.Common\AWS.Practicing.Common.csproj", "{800A220D-696E-4826-A63F-171D54E33484}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWS.Practicing.Services", "AWS.Practicing.Services\AWS.Practicing.Services.csproj", "{2F73FDB4-F6E2-46BD-B9C2-B446E6A6AC63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{36D5BFBA-6E8B-4A29-9DE7-2AAB8FBFA48A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36D5BFBA-6E8B-4A29-9DE7-2AAB8FBFA48A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36D5BFBA-6E8B-4A29-9DE7-2AAB8FBFA48A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{800A220D-696E-4826-A63F-171D54E33484}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{800A220D-696E-4826-A63F-171D54E33484}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{800A220D-696E-4826-A63F-171D54E33484}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{800A220D-696E-4826-A63F-171D54E33484}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F73FDB4-F6E2-46BD-B9C2-B446E6A6AC63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F73FDB4-F6E2-46BD-B9C2-B446E6A6AC63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F73FDB4-F6E2-46BD-B9C2-B446E6A6AC63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F73FDB4-F6E2-46BD-B9C2-B446E6A6AC63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
