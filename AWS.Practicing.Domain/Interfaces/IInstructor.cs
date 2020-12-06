@@ -20,15 +20,14 @@ namespace AWS.Practicing.Domain.Interfaces
         InstructionReplyModel InstructionReplyModel { get; }
 
         /// <summary>
-        /// Asks a question based on the instruction current index and expects an answer
+        /// Gets the options manager that's responsible for the options.
         /// </summary>
-        string Ask();
+        IOptionsManager OptionsManager { get; }
 
         /// <summary>
-        /// Ensures a valid response is persisting.
+        /// Asks a question based on the instruction current index and expects an answer
         /// </summary>
-        /// <returns></returns>
-        void EnsureValidResponse(string response);
+        InstructionReplyModel Ask();
 
         /// <summary>
         /// Checks if instructor finished asking question and updates IsFinishedAsking to true if needed.

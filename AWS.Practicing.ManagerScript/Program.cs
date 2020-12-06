@@ -1,6 +1,7 @@
 ﻿using AWS.Practicing.Common;
 using AWS.Practicing.Domain.Interfaces;
-using AWS.Practicing.Services.Repositories;
+using AWS.Practicing.Domain.Models;
+using AWS.Practicing.Services.Factories;
 using System;
 using System.Threading.Tasks;
 
@@ -15,23 +16,17 @@ namespace AWS.Practicing.ManagerScript
                 ConsoleUtils.YellowWriteLine("Note: If you want to automate the process, then run the CLI with the commands args in the order of steps. Exmaple: 'E' 'START' \n\n");
             }
 
-            //foreach (var arg in args)
-            //{
-            //    Console.WriteLine(arg);
-            //}
-
             try
             {
-                IInstructor instructor = InstructorManagerRepository.GetInstructor();
-                IInstructorExecutor instructorExecutor = InstructorManagerRepository.GetInstructorExecutor(instructor); //todo
+                IInstructor instructor = InstructorManagerFactory.GetInstructor();
+                IInstructorExecutor instructorExecutor = InstructorManagerFactory.GetInstructorExecutor(instructor);
 
                 while (!instructor.IsFinishedAsking)
                 {
-                    string response = instructor.Ask();
-                    instructor.EnsureValidResponse(response);
+                    InstructionReplyModel response = instructor.Ask();
+                    instructor.OptionsManager.EnsureValidResponse(response);
                     ConsoleUtils.BreakLine();
 
-                    // Ensures there are more questions to come
                     instructor.CheckIsFinishedAskingAndUpdate();
                 }
 

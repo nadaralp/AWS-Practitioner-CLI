@@ -1,5 +1,5 @@
 ﻿using AWS.Practicing.Domain.Interfaces;
-using AWS.Practicing.Services.Repositories;
+using AWS.Practicing.Services.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace AWS.Practicing.Services
 
         public async Task ExecuteInstruction()
         {
-            IInstructionCommand instructionCommand = InstructorManagerRepository.GetInstructionCommand(Instructor.InstructionReplyModel);
+            IInstructionCommand instructionCommand = InstructorManagerFactory.GetInstructionCommand(Instructor.InstructionReplyModel);
             await instructionCommand.Execute();
         }
     }

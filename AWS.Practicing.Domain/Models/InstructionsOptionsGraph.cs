@@ -37,11 +37,5 @@ namespace AWS.Practicing.Domain.Models
         public string Trigger { get; set; }
         public string Instruction { get; set; }
         public List<OptionsSchema> Options { get; set; }
-
-        public class OptionsSchema
-        {
-            public string Key { get; set; }
-            public string Description { get; set; }
-        }
     }
 }

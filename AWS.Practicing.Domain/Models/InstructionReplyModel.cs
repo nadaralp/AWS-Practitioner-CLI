@@ -10,15 +10,22 @@ namespace AWS.Practicing.Domain.Models
     {
         public static string EmptyResponse = "NONE";
 
-        public string ExecutionHistoryPath { get; private set; }
         public string Response { get; private set; }
         public short Step { get; private set; }
+        public string ExecutionHistoryPath { get; private set; }
 
         public InstructionReplyModel()
         {
             Response = EmptyResponse;
             Step = 0;
             ExecutionHistoryPath = string.Empty;
+        }
+
+        public InstructionReplyModel(string response, short step, string executionHistoryPath)
+        {
+            Response = response;
+            Step = step;
+            ExecutionHistoryPath = executionHistoryPath;
         }
 
         public void Update(string response)

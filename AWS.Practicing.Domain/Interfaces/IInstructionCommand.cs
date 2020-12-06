@@ -8,6 +8,6 @@ namespace AWS.Practicing.Domain.Interfaces
 {
     public interface IInstructionCommand
     {
-        Task Execute(); // depends if I can invoke like this with enough knowledge
+        Task Execute();
     }
 }

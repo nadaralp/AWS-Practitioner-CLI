@@ -1,4 +1,7 @@
 {
+  "FILE_EXPLANATION": "This file is a decision tree for the questions and instructions performed during the application.",
+  "PARAMS_PERMITTED": "InstructionsOptions have a trigger, instruction and Options/DynamicOptions. DynamicOptions need to have a path for the resolver method",
+
   "InstructionsGraph": [
     {
       "InstructionOptions": [
@@ -34,7 +37,11 @@
             },
             {
               "Key": "SHOW",
-              "Description": "Show all EC2 instances available"
+              "Description": "Show all instances state and meta data"
+            },
+            {
+              "Key": "SPEC",
+              "Description": "Choose specific EC2 Instance to run instructions on"
             }
           ]
         },

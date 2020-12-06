@@ -1,15 +1,16 @@
 ﻿using AWS.Practicing.Common;
 using AWS.Practicing.Domain.Interfaces;
 using AWS.Practicing.Domain.Models;
+using AWS.Practicing.Services.Insturctions;
 using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using YamlDotNet.Serialization;
 
-namespace AWS.Practicing.Services.Repositories
+namespace AWS.Practicing.Services.Factories
 {
-    public class InstructionCommandRepository
+    public class InstructionCommandFactory
     {
         private IDeserializer _yamlDeserizlier = new Deserializer();
 

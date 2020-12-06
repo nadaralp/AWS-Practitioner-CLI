@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWS.Practicing.Services.Repositories
+namespace AWS.Practicing.Services.Factories
 {
-    public class AWSRepository
+    public class AWSFactory
     {
         public static IEC2Service GetEC2Service()
         {

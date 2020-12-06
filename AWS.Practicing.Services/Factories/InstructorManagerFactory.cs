@@ -4,14 +4,13 @@ using AWS.Practicing.Domain.Models;
 using System;
 using System.IO;
 
-namespace AWS.Practicing.Services.Repositories
+namespace AWS.Practicing.Services.Factories
 {
-    public class InstructorManagerRepository
+    public class InstructorManagerFactory
     {
         public static IInstructor GetInstructor()
         {
-            string instructionsPath = PathHelpers.GetInstructionsPath;
-            return new Instructor(instructionsPath);
+            return new Instructor();
         }
 
         public static IInstructorExecutor GetInstructorExecutor(IInstructor instructor)
@@ -21,7 +20,7 @@ namespace AWS.Practicing.Services.Repositories
 
         public static IInstructionCommand GetInstructionCommand(InstructionReplyModel instructionReplyModel)
         {
-            InstructionCommandRepository instructionCommandRepository = new InstructionCommandRepository();
+            InstructionCommandFactory instructionCommandRepository = new InstructionCommandFactory();
             return instructionCommandRepository.GetInstructionCommand(instructionReplyModel);
         }
     }

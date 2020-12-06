@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWS.Practicing.ManagerScrip
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWS.Practicing.Common", "AWS.Practicing.Common\AWS.Practicing.Common.csproj", "{800A220D-696E-4826-A63F-171D54E33484}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWS.Practicing.Services", "AWS.Practicing.Services\AWS.Practicing.Services.csproj", "{2F73FDB4-F6E2-46BD-B9C2-B446E6A6AC63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AWS.Practicing.Services", "AWS.Practicing.Services\AWS.Practicing.Services.csproj", "{2F73FDB4-F6E2-46BD-B9C2-B446E6A6AC63}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C67F65BE-5CCA-4531-8053-5FF0F87BAF68}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{33F7A07D-DD4F-471E-A94C-6E99CC8283B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AWS.Practicing.Services.Tests", "AWS.Practicing.Services.Tests\AWS.Practicing.Services.Tests.csproj", "{9335AD0B-5F46-44B9-A4DC-EB4EBD27AE23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +39,20 @@ Global
 		{2F73FDB4-F6E2-46BD-B9C2-B446E6A6AC63}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F73FDB4-F6E2-46BD-B9C2-B446E6A6AC63}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F73FDB4-F6E2-46BD-B9C2-B446E6A6AC63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9335AD0B-5F46-44B9-A4DC-EB4EBD27AE23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9335AD0B-5F46-44B9-A4DC-EB4EBD27AE23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9335AD0B-5F46-44B9-A4DC-EB4EBD27AE23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9335AD0B-5F46-44B9-A4DC-EB4EBD27AE23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4FBC1AFA-973B-4183-A9A0-BF92D8554C4B} = {C67F65BE-5CCA-4531-8053-5FF0F87BAF68}
+		{36D5BFBA-6E8B-4A29-9DE7-2AAB8FBFA48A} = {C67F65BE-5CCA-4531-8053-5FF0F87BAF68}
+		{800A220D-696E-4826-A63F-171D54E33484} = {C67F65BE-5CCA-4531-8053-5FF0F87BAF68}
+		{2F73FDB4-F6E2-46BD-B9C2-B446E6A6AC63} = {C67F65BE-5CCA-4531-8053-5FF0F87BAF68}
+		{9335AD0B-5F46-44B9-A4DC-EB4EBD27AE23} = {33F7A07D-DD4F-471E-A94C-6E99CC8283B6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EF178C48-B598-402A-8D3C-186F87D8E1D0}
