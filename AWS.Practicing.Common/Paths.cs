@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AWS.Practicing.Common
 {
-    public static class PathHelpers
+    public static class Paths
     {
         private static string _baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
         private static string instructionsFolder = "Instructions";
@@ -17,5 +17,8 @@ namespace AWS.Practicing.Common
 
         public static string GetInstructionsExecutorsPath =>
             Path.Combine(_baseDirectory, instructionsFolder, "instructions_executors.yaml");
+
+        public static string ExecutorsAssemblyPath =>
+            "AWS.Practicing.Services";
     }
 }

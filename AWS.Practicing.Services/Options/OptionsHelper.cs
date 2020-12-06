@@ -9,7 +9,7 @@ namespace AWS.Practicing.Services
     {
         public static InstructionsOptionsGraph GetInstructionOptionsGraphFromJsonFile()
         {
-            string instructionsPath = PathHelpers.GetInstructionsPath;
+            string instructionsPath = Paths.GetInstructionsPath;
 
             using (var streamReader = new StreamReader(instructionsPath))
             {

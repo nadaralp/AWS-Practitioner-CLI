@@ -63,7 +63,11 @@
     },
     {
       "InstructionOptions": [
-
+        {
+          "Trigger": "SPEC",
+          "Instruction": "John Doe Text",
+          "OptionsDynamicExecutorFullPath": "AWS.Practicing.Services.Options.Commands.EC2ListAllInstancesCommand"
+        }
       ]
     }
   ]

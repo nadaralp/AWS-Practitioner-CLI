@@ -17,8 +17,7 @@ namespace AWS.Practicing.Services.Factories
 
             if (instructionOption.Options is null)
             {
-                // probably more data needed in order to create that with reflection
-                return new DynamicOptionsManager(instructionReplyModel);
+                return new DynamicOptionsManager(instructionReplyModel, instructionOption.OptionsDynamicExecutorFullPath);
             }
 
             return new BasicOptionsManager(instructionReplyModel);

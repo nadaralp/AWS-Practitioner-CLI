@@ -11,7 +11,7 @@ namespace AWS.Practicing.Services.Insturctions.Commands
     {
         public async Task Execute()
         {
-            Console.WriteLine("I love daria liukin");
+            Console.WriteLine("I love Daria Liukin");
         }
     }
 }

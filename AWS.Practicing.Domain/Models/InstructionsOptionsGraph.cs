@@ -37,5 +37,11 @@ namespace AWS.Practicing.Domain.Models
         public string Trigger { get; set; }
         public string Instruction { get; set; }
         public List<OptionsSchema> Options { get; set; }
+
+        #region Dynamic Options Props
+
+        public string OptionsDynamicExecutorFullPath { get; set; }
+
+        #endregion Dynamic Options Props
     }
 }

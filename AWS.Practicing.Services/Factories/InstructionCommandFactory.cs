@@ -21,7 +21,7 @@ namespace AWS.Practicing.Services.Factories
         /// <exception cref="InstructionNotImplementedException"
         public IInstructionCommand GetInstructionCommand(InstructionReplyModel instructionReplyModel)
         {
-            string instructionExecutorsPath = PathHelpers.GetInstructionsExecutorsPath;
+            string instructionExecutorsPath = Paths.GetInstructionsExecutorsPath;
             string fileText = File.ReadAllText(instructionExecutorsPath);
             InstructionExecutorsOptions instructionExecutorsOptions = _yamlDeserizlier.Deserialize<InstructionExecutorsOptions>(fileText);
 
@@ -35,14 +35,7 @@ namespace AWS.Practicing.Services.Factories
                 throw new InstructionNotImplementedException(instructionReplyModel);
             }
 
-            return CreateExecutor(executorInfo.ExecutorFullPath);
-        }
-
-        private IInstructionCommand CreateExecutor(string executorFullPath)
-        {
-            Assembly assembly = typeof(Instructor).Assembly;
-            IInstructionCommand instance = assembly.CreateInstance(executorFullPath) as IInstructionCommand;
-            return instance;
+            return ReflectionUtils.CreateExecutor<IInstructionCommand>(executorInfo.ExecutorFullPath);
         }
     }
 }
