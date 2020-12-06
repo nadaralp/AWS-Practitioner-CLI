@@ -16,5 +16,10 @@ namespace AWS.Practicing.Domain.Interfaces
         /// </summary>
         /// <exception cref="InvalidReplyException"
         void EnsureValidResponse(InstructionReplyModel replyModel);
+
+        /// <summary>
+        /// Determines if the history path has an executor to be executed.
+        /// </summary>
+        bool HasOptionExecutorForHistoryPath(InstructionReplyModel replyModel);
     }
 }

@@ -28,9 +28,13 @@ namespace AWS.Practicing.Domain.Models
             ExecutionHistoryPath = executionHistoryPath;
         }
 
-        public void Update(string response)
+        public void UpdateStep()
         {
             Step++;
+        }
+
+        public void UpdateResponse(string response)
+        {
             UpdateExecutionHistoryPath(response);
             Response = response;
         }

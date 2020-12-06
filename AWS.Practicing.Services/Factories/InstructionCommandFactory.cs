@@ -1,4 +1,5 @@
 ﻿using AWS.Practicing.Common;
+using AWS.Practicing.Domain.Exceptions;
 using AWS.Practicing.Domain.Interfaces;
 using AWS.Practicing.Domain.Models;
 using AWS.Practicing.Services.Insturctions;
@@ -14,6 +15,10 @@ namespace AWS.Practicing.Services.Factories
     {
         private IDeserializer _yamlDeserizlier = new Deserializer();
 
+        /// <summary>
+        /// Get's the instruction command based on the execution history path.
+        /// </summary>
+        /// <exception cref="InstructionNotImplementedException"
         public IInstructionCommand GetInstructionCommand(InstructionReplyModel instructionReplyModel)
         {
             string instructionExecutorsPath = PathHelpers.GetInstructionsExecutorsPath;
@@ -27,7 +32,7 @@ namespace AWS.Practicing.Services.Factories
 
             if (executorInfo is null)
             {
-                throw new NotImplementedException($"{instructionReplyModel.ExecutionHistoryPath} has no executor implementation");
+                throw new InstructionNotImplementedException(instructionReplyModel);
             }
 
             return CreateExecutor(executorInfo.ExecutorFullPath);
@@ -35,7 +40,6 @@ namespace AWS.Practicing.Services.Factories
 
         private IInstructionCommand CreateExecutor(string executorFullPath)
         {
-            // change reflection - don't hard code instructor
             Assembly assembly = typeof(Instructor).Assembly;
             IInstructionCommand instance = assembly.CreateInstance(executorFullPath) as IInstructionCommand;
             return instance;

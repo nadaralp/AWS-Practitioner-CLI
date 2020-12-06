@@ -1,8 +1,6 @@
-﻿using AWS.Practicing.Common;
-using AWS.Practicing.Domain.Interfaces;
+﻿using AWS.Practicing.Domain.Interfaces;
 using AWS.Practicing.Domain.Models;
-using System;
-using System.IO;
+using AWS.Practicing.Services.Insturctions;
 
 namespace AWS.Practicing.Services.Factories
 {
@@ -20,8 +18,8 @@ namespace AWS.Practicing.Services.Factories
 
         public static IInstructionCommand GetInstructionCommand(InstructionReplyModel instructionReplyModel)
         {
-            InstructionCommandFactory instructionCommandRepository = new InstructionCommandFactory();
-            return instructionCommandRepository.GetInstructionCommand(instructionReplyModel);
+            InstructionCommandFactory instructionCommandFactory = new InstructionCommandFactory();
+            return instructionCommandFactory.GetInstructionCommand(instructionReplyModel);
         }
     }
 }

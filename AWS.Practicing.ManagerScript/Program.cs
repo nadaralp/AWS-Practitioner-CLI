@@ -19,8 +19,6 @@ namespace AWS.Practicing.ManagerScript
             try
             {
                 IInstructor instructor = InstructorManagerFactory.GetInstructor();
-                IInstructorExecutor instructorExecutor = InstructorManagerFactory.GetInstructorExecutor(instructor);
-
                 while (!instructor.IsFinishedAsking)
                 {
                     InstructionReplyModel response = instructor.Ask();
@@ -30,7 +28,8 @@ namespace AWS.Practicing.ManagerScript
                     instructor.CheckIsFinishedAskingAndUpdate();
                 }
 
-                await instructorExecutor.ExecuteInstruction();
+                IInstructorExecutor instructorExecutor = InstructorManagerFactory.GetInstructorExecutor(instructor);
+                await instructorExecutor.InstructionCommand.Execute();
             }
             catch (Exception e)
             {

@@ -18,11 +18,13 @@ namespace AWS.Practicing.Services.Insturctions
 
         public InstructionReplyModel InstructionReplyModel { get; private set; }
 
+        private IOptionsManager _optionsManager;
+
         public IOptionsManager OptionsManager
         {
             get
             {
-                return OptionsFactory.GetOptionsManager(InstructionReplyModel);
+                return _optionsManager;
             }
         }
 
@@ -41,26 +43,30 @@ namespace AWS.Practicing.Services.Insturctions
 
         public InstructionReplyModel Ask()
         {
+            GetNewOptionsManagerBasedOnReplyModel();
+
             foreach (OptionsSchema optionSchema in OptionsManager.Options)
             {
                 ConsoleUtils.WriteLine($"{optionSchema.Key}: {optionSchema.Description}");
             }
             string response = Console.ReadLine();
-            InstructionReplyModel.Update(response);
+            InstructionReplyModel.UpdateResponse(response);
             return InstructionReplyModel;
         }
 
         public void CheckIsFinishedAskingAndUpdate()
         {
-            try
-            {
-                OptionsManager.Options.Any();
-            }
-            catch
-            {
-                InstructionReplyModel.RevertStep(); // need to revert 1 back because EnsureValidResponse() increments always.
+            if (OptionsManager.HasOptionExecutorForHistoryPath(InstructionReplyModel))
                 _isFinishedAsking = true;
-            }
         }
+
+        #region Private Methods
+
+        private void GetNewOptionsManagerBasedOnReplyModel()
+        {
+            _optionsManager = OptionsFactory.GetOptionsManager(InstructionReplyModel);
+        }
+
+        #endregion Private Methods
     }
 }

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AWS.Practicing.Services.InstructorCommands
+namespace AWS.Practicing.Services.Insturctions.Commands
 {
     public class EC2StopAllCommand : IInstructionCommand
     {

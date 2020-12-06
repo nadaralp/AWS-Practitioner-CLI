@@ -10,7 +10,7 @@ namespace AWS.Practicing.Domain.Exceptions
     public class InvalidReplyException : Exception
     {
         public InvalidReplyException(InstructionReplyModel instructionReplyModel)
-            : base($"{instructionReplyModel.Response} is an invalid response for step {instructionReplyModel.Step}")
+            : base($"{instructionReplyModel.Response} is an invalid response for step {instructionReplyModel.Step + 1}")
         {
         }
     }

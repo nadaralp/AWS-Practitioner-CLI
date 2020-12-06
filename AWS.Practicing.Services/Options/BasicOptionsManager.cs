@@ -14,7 +14,7 @@ namespace AWS.Practicing.Services
         {
             get
             {
-                return GetCurrentInstruction.Options;
+                return InstructionOption.Options;
             }
         }
     }

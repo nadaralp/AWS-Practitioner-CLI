@@ -2,6 +2,7 @@
 using AWS.Practicing.Domain.Exceptions;
 using AWS.Practicing.Domain.Interfaces;
 using AWS.Practicing.Domain.Models;
+using AWS.Practicing.Services.Factories;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -14,27 +15,43 @@ namespace AWS.Practicing.Services
 {
     public abstract class BaseOptionsManager : IOptionsManager
     {
-        protected InstructionsOptionsGraph InstructionsOptionsGraph { get; }
         protected InstructionReplyModel InstructionReplyModel { get; }
 
-        protected InstructionOption GetCurrentInstruction
-         =>
-            InstructionsOptionsGraph[InstructionReplyModel];
+        protected InstructionOption InstructionOption { get; }
 
         public abstract ICollection<OptionsSchema> Options { get; }
 
         public BaseOptionsManager(InstructionReplyModel instructionReplyModel)
         {
-            InstructionsOptionsGraph = OptionsHelper.GetInstructionOptionsGraphFromJsonFile();
             InstructionReplyModel = instructionReplyModel;
+            var instructionsOptionsGraph = OptionsHelper.GetInstructionOptionsGraphFromJsonFile();
+            InstructionOption = instructionsOptionsGraph[instructionReplyModel];
         }
 
         public virtual void EnsureValidResponse(InstructionReplyModel replyModel)
         {
             IEnumerable<string> optionalKeys = Options.Select(option => option.Key.ToLower());
-            if (optionalKeys.Contains(replyModel.Response.ToLower()))
+            if (!optionalKeys.Contains(replyModel.Response.ToLower()))
             {
                 throw new InvalidReplyException(replyModel);
+            }
+
+            InstructionReplyModel.UpdateStep(); //side effect?
+        }
+
+        public bool HasOptionExecutorForHistoryPath(InstructionReplyModel replyModel)
+        {
+            // that's a very expensive implementation. There should be a singleton for the YAML DTO that we can query against.
+
+            try
+            {
+                InstructionCommandFactory commandFactory = new InstructionCommandFactory();
+                commandFactory.GetInstructionCommand(replyModel);
+                return true;
+            }
+            catch (InstructionNotImplementedException)
+            {
+                return false;
             }
         }
     }

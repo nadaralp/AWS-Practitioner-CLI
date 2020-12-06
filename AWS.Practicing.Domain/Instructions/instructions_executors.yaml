@@ -5,10 +5,10 @@
 
 Executors:
   - Key: ec2_stop
-    ExecutorFullPath: AWS.Practicing.Services.InstructorCommands.EC2StopAllCommand
+    ExecutorFullPath: AWS.Practicing.Services.Insturctions.Commands.EC2StopAllCommand
 
   - Key: ec2_start
-    ExecutorFullPath: AWS.Practicing.Services.InstructorCommands.EC2StartAllCommand
+    ExecutorFullPath: AWS.Practicing.Services.Insturctions.Commands.EC2StartAllCommand
 
   - Key: ec2_show
-    ExecutorFullPath: AWS.Practicing.Services.InstructorCommands.EC2ShowAllCommand
+    ExecutorFullPath: AWS.Practicing.Services.Insturctions.Commands.EC2ShowAllCommand
