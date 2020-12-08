@@ -45,6 +45,7 @@ namespace AWS.Practicing.Services.Insturctions
         {
             GetNewOptionsManagerBasedOnReplyModel();
 
+            Console.WriteLine(OptionsManager.InstructionDescription);
             foreach (OptionsSchema optionSchema in OptionsManager.Options)
             {
                 ConsoleUtils.WriteLine($"{optionSchema.Key}: {optionSchema.Description}");

@@ -7,6 +7,12 @@ namespace AWS.Practicing.Domain.Interfaces
     public interface IOptionsManager
     {
         /// <summary>
+        /// Get the instruction
+        /// </summary>
+        /// <example>Choose service to operate on</example>
+        string InstructionDescription { get; }
+
+        /// <summary>
         /// Get options to ask
         /// </summary>
         ICollection<OptionsSchema> Options { get; }

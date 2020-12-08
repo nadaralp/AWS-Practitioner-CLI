@@ -1,6 +1,6 @@
 {
   "FILE_EXPLANATION": "This file is a decision tree for the questions and instructions performed during the application.",
-  "PARAMS_PERMITTED": "InstructionsOptions have a trigger, instruction and Options/DynamicOptions. DynamicOptions need to have a path for the resolver method",
+  "PARAMS_PERMITTED": "InstructionsOptions have a trigger, instruction and Options/DynamicOptions. DynamicOptions need to have a path for the resolver method and DynamicReplyParams",
 
   "InstructionsGraph": [
     {
@@ -64,9 +64,28 @@
     {
       "InstructionOptions": [
         {
-          "Trigger": "SPEC",
-          "Instruction": "John Doe Text",
-          "OptionsDynamicExecutorFullPath": "AWS.Practicing.Services.Options.Commands.EC2ListAllInstancesCommand"
+          "Trigger": "EC2_SPEC",
+          "Instruction": "Choose instance",
+          "OptionsDynamicExecutorFullPath": "AWS.Practicing.Services.Options.Commands.EC2ListAllInstancesCommand",
+          "DynamicReplyParams": "InstanceId, Status, InstanceType"
+        }
+      ]
+    },
+    {
+      "InstructionOptions": [
+        {
+          "Trigger": "EC2_SPEC_#",
+          "Instruction": "Choose operation",
+          "Options": [
+            {
+              "Key": "START",
+              "Description": "Start instance"
+            },
+            {
+              "Key": "STOP",
+              "Description": "Stop instance"
+            }
+          ]
         }
       ]
     }

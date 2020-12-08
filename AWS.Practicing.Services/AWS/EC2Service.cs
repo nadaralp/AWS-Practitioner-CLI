@@ -12,16 +12,16 @@ namespace AWS.Practicing.Services.AWS
 {
     public class EC2Service : IEC2Service
     {
-        private IAmazonEC2 _amazonEC2Client;
+        public IAmazonEC2 AmazonEC2Client { get; }
 
         public EC2Service(IAmazonEC2 amazonEC2)
         {
-            _amazonEC2Client = amazonEC2;
+            AmazonEC2Client = amazonEC2;
         }
 
         public async Task StartAllInstances()
         {
-            var instancesDescription = await _amazonEC2Client.DescribeInstancesAsync();
+            var instancesDescription = await AmazonEC2Client.DescribeInstancesAsync();
             var instancesToStartId = new List<string>();
 
             foreach (var reservation in instancesDescription.Reservations)
@@ -34,7 +34,7 @@ namespace AWS.Practicing.Services.AWS
             }
 
             StartInstancesRequest startInstancesRequest = new StartInstancesRequest(instancesToStartId);
-            var response = await _amazonEC2Client.StartInstancesAsync(startInstancesRequest);
+            var response = await AmazonEC2Client.StartInstancesAsync(startInstancesRequest);
             Console.WriteLine($"Status Code: {response.HttpStatusCode}");
         }
 
@@ -45,7 +45,7 @@ namespace AWS.Practicing.Services.AWS
 
         public async Task StopAllInstances()
         {
-            var instancesDescription = await _amazonEC2Client.DescribeInstancesAsync();
+            var instancesDescription = await AmazonEC2Client.DescribeInstancesAsync();
             var instancesToStopId = new List<string>();
 
             foreach (var reservation in instancesDescription.Reservations)
@@ -58,7 +58,7 @@ namespace AWS.Practicing.Services.AWS
             }
 
             StopInstancesRequest stopInstancesRequest = new StopInstancesRequest(instancesToStopId);
-            var response = await _amazonEC2Client.StopInstancesAsync(stopInstancesRequest);
+            var response = await AmazonEC2Client.StopInstancesAsync(stopInstancesRequest);
             Console.WriteLine($"Status Code: {response.HttpStatusCode}");
         }
 

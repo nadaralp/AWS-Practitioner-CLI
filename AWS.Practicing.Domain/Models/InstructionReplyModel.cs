@@ -44,8 +44,6 @@ namespace AWS.Practicing.Domain.Models
             Step--;
         }
 
-        #region Private methods
-
         public void UpdateExecutionHistoryPath(string response)
         {
             if (ExecutionHistoryPath == string.Empty)
@@ -54,7 +52,23 @@ namespace AWS.Practicing.Domain.Models
                 return;
             }
 
+            if (IsDynamicallyGeneratedQuestionResponse(response))
+            {
+                ExecutionHistoryPath += $"_#";
+                return;
+            }
+
             ExecutionHistoryPath += $"_{response}";
+        }
+
+        #region Private methods
+
+        public bool IsDynamicallyGeneratedQuestionResponse(string response)
+        {
+            if (response.Length == 1)
+                return true;
+
+            return false;
         }
 
         #endregion Private methods

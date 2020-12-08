@@ -25,7 +25,7 @@ namespace AWS.Practicing.Services
             {
                 // cache that unless new dynamic options manager created -> prevent reflection work
                 IDynamicOptionsCommand dynamicOptionsCommand = ReflectionUtils.CreateExecutor<IDynamicOptionsCommand>(OptionsDynamicExecutorFullPath);
-                return dynamicOptionsCommand.GetDynamicOptions();
+                return dynamicOptionsCommand.GetDynamicOptions().GetAwaiter().GetResult();
             }
         }
     }

@@ -21,11 +21,14 @@ namespace AWS.Practicing.Services
 
         public abstract ICollection<OptionsSchema> Options { get; }
 
+        public string InstructionDescription { get; }
+
         public BaseOptionsManager(InstructionReplyModel instructionReplyModel)
         {
             InstructionReplyModel = instructionReplyModel;
-            var instructionsOptionsGraph = OptionsHelper.GetInstructionOptionsGraphFromJsonFile();
+            InstructionsOptionsGraph instructionsOptionsGraph = OptionsHelper.GetInstructionOptionsGraphFromJsonFile();
             InstructionOption = instructionsOptionsGraph[instructionReplyModel];
+            InstructionDescription = InstructionOption.Instruction;
         }
 
         public virtual void EnsureValidResponse(InstructionReplyModel replyModel)

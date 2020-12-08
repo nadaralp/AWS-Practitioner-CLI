@@ -4,6 +4,7 @@
 # Keys should be lower cased - the keys are the history of triggers to get to the command
 
 Executors:
+    # EC2 Section =====================
   - Key: ec2_stop
     ExecutorFullPath: AWS.Practicing.Services.Insturctions.Commands.EC2StopAllCommand
 
@@ -12,3 +13,6 @@ Executors:
 
   - Key: ec2_show
     ExecutorFullPath: AWS.Practicing.Services.Insturctions.Commands.EC2ShowAllCommand
+
+  - Key: ec2_spec_#_start
+    ExecutorFullPath: AWS.Practicing.Services.Insturctions.Commands.EC2StartSingle

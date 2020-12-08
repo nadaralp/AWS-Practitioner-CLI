@@ -1,5 +1,9 @@
-﻿using AWS.Practicing.Domain.Interfaces.DynamicOptions;
+﻿using Amazon.EC2.Model;
+using AWS.Practicing.Common.Extensions;
+using AWS.Practicing.Domain.Interfaces.AWS;
+using AWS.Practicing.Domain.Interfaces.DynamicOptions;
 using AWS.Practicing.Domain.Models;
+using AWS.Practicing.Services.Factories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +14,27 @@ namespace AWS.Practicing.Services.Options.Commands
 {
     public class EC2ListAllInstancesCommand : IDynamicOptionsCommand
     {
-        public ICollection<OptionsSchema> GetDynamicOptions()
+        private IEC2Service EC2Service = AWSFactory.GetEC2Service();
+
+        public async Task<ICollection<OptionsSchema>> GetDynamicOptions()
         {
-            var ret = new List<OptionsSchema>();
+            DescribeInstancesResponse descriptionResponse = await EC2Service.AmazonEC2Client.DescribeInstancesAsync();
 
-            ret.Add(new OptionsSchema { Key = "a", Description = "test" });
-            ret.Add(new OptionsSchema { Key = "b", Description = "test-abc" });
-            ret.Add(new OptionsSchema { Key = "c", Description = "test-caca" });
-            ret.Add(new OptionsSchema { Key = "d", Description = "test-dandy" });
+            IEnumerable<Instance> instances = descriptionResponse.Reservations.SelectMany(r => r.Instances);
+            var options = instances.Select((instance, index) => new OptionsSchema(index.ToASCII(), GetInstanceDescription(instance)));
+            return options.ToList();
+        }
 
-            return ret;
+        private string GetInstanceDescription(Instance instance)
+        {
+            StringBuilder description = new StringBuilder();
+            description.Append($"Instance id: {instance.InstanceId}, status: {instance.State.Name.Value}, type: {instance.InstanceType.Value}");
+
+            Tag nameTag = instance.Tags.FirstOrDefault(t => t.Key.ToLower() == "name");
+            if (nameTag != null)
+                description.Append($", name: {nameTag.Value}");
+
+            return description.ToString();
         }
     }
 }

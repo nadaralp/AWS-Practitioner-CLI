@@ -9,6 +9,6 @@ namespace AWS.Practicing.Domain.Interfaces.DynamicOptions
 {
     public interface IDynamicOptionsCommand
     {
-        ICollection<OptionsSchema> GetDynamicOptions();
+        Task<ICollection<OptionsSchema>> GetDynamicOptions();
     }
 }

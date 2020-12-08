@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AWSSDK.Core" Version="3.5.1.46" />
+    <PackageReference Include="AWSSDK.EC2" Version="3.5.22" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Instructions\instructions.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

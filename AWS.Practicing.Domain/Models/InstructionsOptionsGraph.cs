@@ -20,7 +20,7 @@ namespace AWS.Practicing.Domain.Models
                 }
 
                 InstructionOption instructionOption = instructionListPerLevel.InstructionOptions
-                    .FirstOrDefault(option => option.Trigger.ToLower() == instructionReplyModel.Response.ToLower());
+                    .FirstOrDefault(option => option.Trigger.ToLower() == instructionReplyModel.ExecutionHistoryPath.ToLower());
 
                 return instructionOption ?? throw new InvalidReplyException(instructionReplyModel);
             }
